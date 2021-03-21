@@ -36,7 +36,7 @@ var SliderStatus = true;
 		PrevAuthor = $(".nav-slide a.prev p"),
 		PrevImg = $(".nav-slide a.prev img"),
 		activeSlide = $(".image-slide"),
-		activeTitle = $(".slider-content h1"),
+		activeTitle = $(".slider-content h2"),
 		activeIndex, nextIndex, prevIndex,
 		objHeaderLength = dataHeader.length - 1,
 		SliderTimeout = false;
@@ -216,7 +216,7 @@ var SliderStatus = true;
 	});
 
 
-    // PORTFOLIO
+    // cv
 
     $(document).on("ready", function(){
     	"use strict"
@@ -232,11 +232,11 @@ var SliderStatus = true;
 	    }
 
 	    var portWidth = $(window).innerWidth() / columnsSplit(),
-	    	containerPortfolio = $(".container-portfolio"),
+	    	containercv = $(".container-cv"),
 	    	portImage = [];
 
 	    $(window).on("resize", function(){
-	    	$(".container-portfolio .portfolio-view").each(function(a, b){
+	    	$(".container-cv .cv-view").each(function(a, b){
 	    		$(b).css({
 	    			"width" : $(window).innerWidth()/columnsSplit(),
 	    			"height" : ($(window).innerWidth()/columnsSplit() - 113)
@@ -244,13 +244,13 @@ var SliderStatus = true;
 	    	});
 	    });
 
-	    $.each(portfolio, function(a, b){
+	    $.each(cv, function(a, b){
 	    	portImage.push(b.image);
 	    });
 
 	    new preLoader(portImage, {
 	    	onComplete : function(load, errors){
-	    		$.each(portfolio, function(a, b){
+	    		$.each(cv, function(a, b){
 			    	var image = (typeof b.image === "undefined") ? "images/broken-image.jpg" : b.image;
 
 			    	if (errors){
@@ -260,14 +260,14 @@ var SliderStatus = true;
 			            }
 			        }
 
-			        var portList = $('<figure class="portfolio-view ' + b.category + '" style="width:' + portWidth + 'px;height:' + (portWidth-113) + 'px"><img src="' + image + '"><figcaption><h2>' + b.title + '</span></h2><p>' + b.text + '</p><a href="' + b.link + '">View more</a></figcaption></figure>');
+			        var portList = $('<figure class="cv-view ' + b.category + '" style="width:' + portWidth + 'px;height:' + (portWidth-113) + 'px"><img src="' + image + '"><figcaption><h2>' + b.title + '</span></h2><p>' + b.text + '</p><a href="' + b.link + '">View more</a></figcaption></figure>');
 
-			    	portList.appendTo(containerPortfolio);
+			    	portList.appendTo(containercv);
 			    });
 			    
-			    $(".container-portfolio").mixItUp({
+			    $(".container-cv").mixItUp({
 			    	selectors : {
-			    		target : ".portfolio-view"
+			    		target : ".cv-view"
 			    	},
 			    	animation: {
 			    		effects: "fade stagger scale rotateX(-360deg)",
