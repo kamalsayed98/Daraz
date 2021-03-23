@@ -1,5 +1,5 @@
 
-fetch('http://profile-srv.herokuapp.com/data')
+fetch('https://profile-srv.herokuapp.com/data')
     .then(response => response.json())
     .then(json => {
         fillBodyDataA(json);
