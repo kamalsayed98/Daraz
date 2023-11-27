@@ -1,10 +1,16 @@
-
-fetch('https://profile-srv.herokuapp.com/data')
-    .then(response => response.json())
-    .then(json => {
-        fillBodyDataA(json);
-        showLoadedDiv();
-    });
+import staticData from './staticData/staticData.js';
+fillBodyDataA(staticData);
+showLoadedDiv();
+// fetch('https://profile-srv.herokuapp.com/data')
+//     .then(response => response.json())
+//     .then(json => {
+//         fillBodyDataA(json);
+//     }).catch(e => {
+//         console.log(e)
+//         fillBodyDataA(staticData);
+//     }).finally(() => {
+//         showLoadedDiv();
+//     });
 
 function fillBodyDataA(json) {
     headerData(json.headerData);
@@ -28,18 +34,18 @@ function friendsData(json) {
 }
 
 function contactMeData(json) {
-    if(!json) return;
+    if (!json) return;
     const contactMeTitle = document.getElementById('contactMeTitle');
     contactMeTitle.innerText = json.title;
-    if(json.data){
+    if (json.data) {
         const contactMeAdditionalData = document.getElementById('contactMeAdditionalData');
         for (let i = 0; i < json.data.length; i++) {
             const e = json.data[i];
             var element = e.text;
-            if(e.href){
-                element = '<a href="'+e.href+'">'+element+'</a>' 
+            if (e.href) {
+                element = '<a href="' + e.href + '">' + element + '</a>'
             }
-            element = '<span><i class="fa '+e.class+' fa-lg"></i>'+element+'</span>';
+            element = '<span><i class="fa ' + e.class + ' fa-lg"></i>' + element + '</span>';
             contactMeAdditionalData.appendChild(htmlToElements(element));
         }
     }
@@ -57,7 +63,9 @@ function headerData(json) {
 
     const headerTitle = document.getElementById("header-title")
     headerTitle.innerText = json.headerTitle;
-    tabs = json.headerTabs;
+    console.log("headerData")
+    console.log(json)
+    const tabs = json.headerTabs;
     if (tabs) {
         const headerTabsUL = document.getElementById("headerTabsUL")
         for (let i = 0; i < tabs.length; i++) {
@@ -234,7 +242,7 @@ function projectsData(json) {
             else return 1
         }
 
-        var portWidth = ($(window).innerWidth() / columnsSplit() -5),
+        var portWidth = ($(window).innerWidth() / columnsSplit() - 5),
             containercv = $(".container-cv"),
             portImage = [];
 
@@ -261,7 +269,7 @@ function projectsData(json) {
                             image = (errors[i] === image) ? "images/broken-image.jpg" : image;
                         }
                     }
-                    var portList = $('<figure class="cv-view ' + b.category + '" style="width:' + portWidth  + 'px;height:' + (portWidth - 113) + 'px"><img src="' + image + '"><figcaption><h2>' + b.title + '</span></h2><p>' + b.text + '</p><a href="' + b.link + '">View more</a></figcaption></figure>');
+                    var portList = $('<figure class="cv-view ' + b.category + '" style="width:' + portWidth + 'px;height:' + (portWidth - 113) + 'px"><img src="' + image + '"><figcaption><h2>' + b.title + '</span></h2><p>' + b.text + '</p><a href="' + b.link + '">View more</a></figcaption></figure>');
 
                     portList.appendTo(containercv);
                 });
