@@ -29,12 +29,12 @@ export default {
     headerBody: [
         {
             bigImage: "images/slide-1.jpg",
-            title: "A Palestinian refugee in lebanon, aspire to move to europe",
+            title: "Full Stack Developer currently using Dotnet Core & Flutter Frameworks",
             author: "kamal"
         },
         {
             bigImage: "images/slide-2.jpg",
-            title: "Full Stack Developer currently working as mobile developer using Flutter Framework ",
+            title: "A results-driven individual with a reputation for working diligently to achieve objectives and contribute to team success.",
             author: "kamal"
         },
         {

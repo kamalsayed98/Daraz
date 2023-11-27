@@ -2,11 +2,11 @@ export default [
     {
         text: "Projects",
         icon: "fa-gears",
-        dataTo: "11"
+        dataTo: "13"
     },
     {
-        text: "Mail",
-        icon: "fa-inbox",
-        dataTo: "1298"
+        text: "Companies Worked At",
+        icon: "fa-building",
+        dataTo: "3"
     },
 ]
